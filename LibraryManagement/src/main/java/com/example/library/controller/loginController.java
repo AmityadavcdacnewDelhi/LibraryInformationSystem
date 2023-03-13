@@ -22,8 +22,6 @@ import com.example.library.entities.Constants;
 import com.example.library.service.HelperService;
 import com.wf.captcha.base.Captcha;
 
-import library.captcha.CaptchaGenerator;
-import library.captcha.CaptchaUtils;
 
 import com.example.library.entities.Message;
 import com.example.library.entities.User;
@@ -40,11 +38,7 @@ public class loginController {
 	@Autowired
 	UserRepository userRepository;
 	
-	@Autowired
-	private CaptchaGenerator captchaGenerator;
 	
-//	@Autowired
-//	CaptchaGenerator captchaGenerator;
 
 	public loginController() {
 	}
@@ -71,10 +65,7 @@ public class loginController {
 		model.addAttribute("title", "Login");
 		model.addAttribute("admin", new Admin());
 		
-//		Captcha captcha = captchaGenerator.createCaptcha(200,50);
-//		session.setAttribute("captcha", captcha.getAnswer());
-//		model.addAllAttributes("captcha",CaptchaUtils.encodeBase64(captcha));
-//		
+
 		return "Basic/login";
 	//	return "Basic/logincapta";
 	}
