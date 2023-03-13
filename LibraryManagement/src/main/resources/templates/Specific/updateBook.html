@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="gray">
+
+	<div class="container-lg">
+
+		<div class="square">
+
+			<h3 class="heading mt-2">Update Book Information</h3>
+
+			<div class="smSquare">
+
+				<form th:action="@{'/book/saveUpdate/'+${Book.bookId}}"
+					method="post" th:object="${Book}">
+					<table>
+						<!-- Book Title -->
+						<tr>
+							<td class="leftcolB">Title</td>
+							<td><input type="text" placeholder="Book title"
+								class="form-control" th:value="${Book.title}" name="title"
+								required="required"></td>
+						</tr>
+
+						<!-- Author -->
+						<tr>
+							<td class="leftcolB">Author</td>
+							<td><input type="text" placeholder="Author"
+								class="form-control" th:value="${Book.author}" name="author"
+								required="required"></td>
+
+						</tr>
+						<!-- Price -->
+						<tr>
+							<td class="leftcolB">Price</td>
+							<td><input type="number" placeholder="Price"
+								class="form-control" th:value="${Book.price}" name="price"
+								required="required"></td>
+
+						</tr>
+
+						<!-- Category -->
+						<tr>
+							<td class="leftcolB">Category</td>
+							<td><select name="category" class="form-control"
+								required="required">
+									<th:bolck th:each="cat : ${categories}">
+										<option th:text="${cat}" th:value="${cat}"
+											th:selected="${cat} == ${Book.category}"></option>
+									</th:bolck>
+							</select></td>
+
+						</tr>
+
+
+					</table>
+
+					<!--  Submit -->
+
+					<a th:href="@{'/book/OneBook/'+${Book.title}+'/'+${Book.author}}"
+						class="upBut baButh mt-2 me-4 noDec">CANCEL</a>
+					<button type="submit" class="upBut upButh mt-2 ms-4">UPDATE</button>
+
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+
+</section>
+
+
+</html>

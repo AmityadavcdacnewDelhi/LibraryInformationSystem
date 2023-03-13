@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="gray">
+
+	<div class="container-lg">
+
+		<div class="black">Student Information</div>
+
+     <div class="row">
+			<div class="coll left1">Student Photo</div>
+			<img src="${OneStudent.studentphoto}" width=100px height=100px class="colr right1"></div>
+		</div>
+		<div class="row">
+			<div class="coll left1">Registration Number</div>
+			<div th:text="${OneStudent.registrationNumber}" class="colr right1"></div>
+		</div>
+		<div class="row">
+			<div class="coll left1">Email</div>
+			<div th:text="${OneStudent.email}+' '+${OneStudent.surname}"
+				class="colr right1"></div>
+		</div>
+		<div class="row">
+			<div class="coll left1">Contact</div>
+			<div th:text="${OneStudent.contact}+' '+${OneStudent.surname}"
+				class="colr right1"></div>
+		</div>
+        
+
+		<div class="row">
+			<div class="coll left1">Name</div>
+			<div th:text="${OneStudent.name}+' '+${OneStudent.surname}"
+				class="colr right1"></div>
+		</div>
+
+		<div class="row">
+			<div class="coll left1">Branch</div>
+			<div th:text="${OneStudent.branch}" class="colr right1"></div>
+		</div>
+
+		<div class="row">
+			<div class="coll left1">Year</div>
+			<div th:text="${OneStudent.year}" class="colr right1"></div>
+		</div>
+
+		<div class="row">
+			<div class="coll left1">Division</div>
+			<div th:text="${OneStudent.division}" class="colr right1"></div>
+		</div>
+
+		<div class="row">
+			<div class="coll left1">Roll Number</div>
+			<div th:text="${OneStudent.rollNumber}" class="colr right1">32</div>
+		</div>
+
+
+		<div class="row">
+			<div class="coll left1">Books Issued</div>
+			<div class="colr right1">
+
+				<th:block th:each="book: ${OneStudent.books}">
+
+					<div class="row">
+						<div th:text="${book.bookId}" class="colr1"></div>
+						<div th:text="${book.title}" class="colr2"></div>
+					</div>
+
+				</th:block>
+
+
+			</div>
+
+			<div class="row">
+				<div class="coll left1">Fine</div>
+				<div th:text="${OneStudent.fine} - ${OneStudent.finePaid}"
+					class="colr right1"></div>
+			</div>
+
+			<div class="row">
+				<div class="coll left1">Transactions</div>
+				<div class="colr right1">
+					<a
+						th:href="@{'/student/transaction/' + ${OneStudent.registrationNumber}}"
+						class="noDec"> <svg xmlns="http://www.w3.org/2000/svg"
+							width="24" height="24" fill="currentColor" class="bi bi-journals"
+							viewBox="0 0 16 16">
+  <path
+								d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z" />
+  <path
+								d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z" />
+</svg>
+					</a>
+				</div>
+			</div>
+
+		</div>
+
+		<a th:href=${backLink} class="backB"> BACK </a> <a
+			th:href="@{'/student/updateInfo/'+ ${OneStudent.registrationNumber}}"
+			class="okB"> UPDATE </a>
+	</div>
+
+
+
+
+
+
+
+
+
+
+</section>
+
+</html>

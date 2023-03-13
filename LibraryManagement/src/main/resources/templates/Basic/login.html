@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+<body>
+	<section class="login">
+
+		<!-- JQUERY For Hiding Success Message -->
+		<script type="text/javascript"
+			src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				var hideError = function() {
+					$(".alert").hide();
+				};
+				setTimeout(hideError, 5000);
+			});
+			
+		
+			</script>
+		
+
+		<!-- Success Message -->
+		<div th:if="${session.message}"
+			th:classappend="${session.message.type}" class="alert locAlert"
+			id="successMessage" role="alert">
+			<p th:text="${session.message.text}"></p>
+
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
+
+		<div class="login_box">
+			<div class="left">
+				<div class="top_link">
+					<a th:href="@{/app/home}"><img
+						src="https://drive.google.com/u/0/uc?id=16U__U5dJdaTfNGobB_OpwAJ73vM50rPV&export=download"
+						alt="">Return home</a>
+				</div>
+				<div class="contact">
+
+					<form th:action="@{verify}" method="post" th:object="${admin}">
+						<h3>SIGN IN</h3>
+                         <div th:if="${param.error}"  class="text-danger"> Invalid Username or Password </div>
+						<!-- User name -->
+						<input th:value="${admin.username}" name="username" type="text"
+							placeholder="USERNAME">
+						<!-- Password -->
+						<input name="password" type="password" placeholder="PASSWORD">
+						<img src="data:image/png;bbase64,${captchaEncode}"/>
+						<input name="captcha" type="captcha" placeholder="captcha">
+						
+                           <button type="submit" class="submit">Login</button>
+                          <br>
+                           <a th:href="@{/forget}">forget password</a>
+		               
+					</form>
+				</div>
+			</div>
+			<div class="right">
+				<div class="right-text">
+
+					<div class="text-center">
+						<h3>LIBRARY INFORMATION SYSTEM</h3>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</section>
+	
+<script>
+(function(){
+    const fonts = ["cursive"];
+    let captchaValue = "";
+    function gencaptcha()
+    {
+        let value = btoa(Math.random()*1000000000);
+        value = value.substr(0,5 + Math.random()*5);
+        captchaValue = value;
+    }
+
+    function setcaptcha()
+    {
+        let html = captchaValue.split("").map((char)=>{
+            const rotate = -20 + Math.trunc(Math.random()*30);
+            const font = Math.trunc(Math.random()*fonts.length);
+            return`<span
+            style="
+            transform:rotate(${rotate}deg);
+            font-family:${font[font]};
+            "
+           >${char} </span>`;
+        }).join("");
+        document.querySelector(".login_form #captcha .preview").innerHTML = html;
+    }
+
+    function initCaptcha()
+    {
+        document.querySelector(".login_form #captcha .captcha_refersh").addEventListener("click",function(){
+            gencaptcha();
+            setcaptcha();
+        });
+
+        gencaptcha();
+        setcaptcha();
+    }
+    initCaptcha();
+
+    document.querySelector(".login_form .form_button").addEventListener("click",function(){
+        let inputcaptchavalue = document.querySelector(".login_form #captcha input").value;
+
+        if (inputcaptchavalue === captchaValue) 
+        {
+            // swal("","Log in","success");
+            alert("Log in success");
+        }
+        else
+        {
+            // swal("Invalid Captcha");
+            alert("Invalid Captcha");
+        }
+    });
+})();
+</script>
+</body>
+</html>

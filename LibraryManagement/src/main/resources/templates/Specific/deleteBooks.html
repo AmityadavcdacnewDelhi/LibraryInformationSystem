@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="gray">
+
+
+
+	<!-- JQUERY For Hiding Success Message -->
+
+	<script type="text/javascript"
+		src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			var hideError = function() {
+				$(".alert").hide();
+			};
+			setTimeout(hideError, 5000);
+
+			$("#checkBoxAll").on("click", (function() {
+
+				if ($(this).is(":checked")) {
+					$('.abc').prop('checked', true);
+
+				} else {
+					$('.abc').prop('checked', false);
+				}
+
+			}));
+
+		});
+	</script>
+
+	<!-- Success Message -->
+	<div th:if="${session.message}"
+		th:classappend="${session.message.type}" class="alert locAlert"
+		id="successMessage" role="alert">
+		<p th:text="${session.message.text}"></p>
+
+		<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+	</div>
+
+	<div class="container-lg">
+		<a th:href="@{/book/bookInfoUnique}" class="subButton2 noDec">
+			Back </a> <br />
+		<div class="strip stripOrange">
+
+
+			<input class="form-check-input me-1 xyz" type="checkbox" value=""
+				id="checkBoxAll"> <label class="form-check-label"
+				for="flexCheckDefault"> Select All </label>
+
+		</div>
+
+		<form th:action="@{/book/deleteBooks}" method="post">
+
+
+			<th:block th:each="book : ${books}">
+				<div class="strip"
+					th:classappend="${book.isIssued ? 'stripRed' : 'stripGreen'}">
+
+
+					<input class="form-check-input me-1 abc" type="checkbox"
+						th:value=${book.bookId} name="bookId" id="flexCheckDefault">
+					<label class="form-check-label" for="flexCheckDefault"
+						th:text="${book.bookId}"> </label>
+
+				</div>
+			</th:block>
+			<br />
+			<button class="dilKaBut mt-4" type="submit">Delete</button>
+		</form>
+	</div>
+
+
+</section>
+
+</html>

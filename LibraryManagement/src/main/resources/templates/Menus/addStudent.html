@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="">
+	<!-- JQUERY For Hiding Success Message -->
+	<script type="text/javascript"
+		src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var hideError = function() {
+				$(".alert").hide();
+			};
+			setTimeout(hideError, 5000);
+		});
+	</script>
+	<div class="tryback">
+
+		<!-- Success Message -->
+		<div th:if="${session.message}"
+			th:classappend="${session.message.type}" class="alert locAlert"
+			id="successMessage" role="alert">
+			<p th:text="${session.message.text}"></p>
+
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
+
+		<div class="addBoxStu">
+			<h3>ADD STUDENT</h3>
+			<div>
+				<form th:action="@{saveStudent}" method="post"
+					th:object="${student}">
+					
+					<!--Email-->
+					<div class="row mb-3 mt-4">
+						<div class="colS">
+							<label class="form-label">Email</label>
+						</div>
+						<div class="colN">
+							<input type="email"  name="email"  class="form-control" placeholder="Email"
+								required="required">
+						</div>
+					</div>
+					<!-- Student Salutation -->
+					<div class="row mb-3">
+						<div class="colS">
+							<label class="form-label">Student</label>
+						</div>
+						<div class="colN">
+							<select name="salutation" class="form-control" required="required">
+								<th:bolck th:each="sal : ${salutation}">
+									<option th:text="${sal}"></option>
+								</th:bolck>
+							</select>
+						</div>
+					</div>
+					<!--First Name -->
+					<div class="row mb-3 mt-4">
+						<div class="colS">
+							<label class="form-label">First Name</label>
+						</div>
+						<div class="colN">
+							<input type="text" class="form-control" placeholder="First Name"
+								name="name" required="required">
+						</div>
+					</div>
+					
+					<div class="row mb-3 mt-4">
+						<div class="colS">
+							<label class="form-label">Middle Name</label>
+						</div>
+						<div class="colN">
+							<input type="text" class="form-control" placeholder="Middle Name"
+								name="name" required="required">
+						</div>
+					</div>
+
+					<!--Last Name -->
+					<div class="row mb-3 mt-4">
+						<div class="colS">
+							<label class="form-label">Last Name</label>
+						</div>
+						<div class="colN">
+							<input type="text" class="form-control" placeholder="Last Name"
+								name="surname" required="required">
+						</div>
+					</div>
+
+                     <!--Contact -->
+					<div class="row mb-3 mt-4">
+						<div class="colS">
+							<label class="form-label">Contact Number</label>
+						</div>
+						<div class="colN">
+							<input type="text"  name="contact" class="form-control" placeholder="Contact Number"
+								 required="required">
+						</div>
+					</div>
+
+					<!--Branch -->
+					<div class="row mb-3">
+						<div class="colS">
+							<label class="form-label">Branch</label>
+						</div>
+						<div class="colN">
+							<select name="branch" class="form-control" required="required">
+								<th:bolck th:each="branch : ${branches}">
+									<option th:text="${branch}"></option>
+								</th:bolck>
+							</select>
+						</div>
+					</div>
+
+
+					<!--Year -->
+					<div class="row mb-3">
+						<div class="colS">
+							<label class="form-label">Year</label>
+						</div>
+						<div class="colN">
+							<select name="year" class="form-control" required="required">
+								<th:bolck th:each="year : ${years}">
+									<option th:text="${year}"></option>
+								</th:bolck>
+							</select>
+						</div>
+					</div>
+
+					<!--Division -->
+					<div class="row mb-3">
+						<div class="colS">
+							<label class="form-label">Division</label>
+						</div>
+						<div class="colN">
+							<select name="division" class="form-control" required="required">
+								<th:bolck th:each="divi : ${divisions}">
+									<option th:text="${divi}"></option>
+								</th:bolck>
+							</select>
+						</div>
+					</div>
+
+					<!--Roll Number -->
+					<div class="row mb-3">
+						<div class="colS">
+							<label class="form-label">Registration Number</label>
+						</div>
+						<div class="colN">
+							<input type="text" class="form-control" placeholder="Registration Number"
+								name="rollNumber" required="required">
+						</div>
+					</div>
+					 <div class="row mb-3">
+						<div class="colS">
+							<label class="form-label">Student Photo</label>
+						</div>
+						<div class="colN">
+							 <input type="file" name="studentphoto"
+								placeholder="Student Photo"  required="required">
+						</div>
+					 
+                      
+                      </div>
+
+
+					<!--Back and Submit -->
+					<div>
+						<a th:href="@{/app/dashboard}" class="backAddBook noDec"> BACK
+						</a>
+						<button type="submit" class="subButton3 ms-3">ADD STUDENT</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+</html>

@@ -1,0 +1,141 @@
+.body {
+	background-color: blueviolet;
+	background-image: linear-gradient(45deg, #471457, #5616a0);
+	font-family: 'Raleway', sans-serif;
+	padding-bottom: 40px;
+	padding-top: 10px;
+	min-height: 100vh;
+}
+
+.main-section {
+	width: 80%;
+	margin:  auto;
+	text-align: center;
+	padding: 0px 5px;
+	border-radius: 10px;
+}
+
+.dashbord {
+	width: 30%;
+	display: inline-block;
+	
+	color: #fff;
+	margin-top: 30px;
+	margin-left: 10px;
+	border-radius: 10px;
+}
+
+.detail-section {
+	height: 4em;
+	
+	padding: 5px 0px;
+	border-radius: 10px;
+}
+
+h3{
+	margin-top: 8px;
+}
+
+.dashbord .detail-section:hover {
+	background-color: #151B54;
+	cursor: pointer;
+}
+
+.detail-section a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.dashboard-one .icon-section, .dashboard-one .icon-section i {
+	background-color: #34495E;
+	border-radius: 10px;
+}
+
+.dashboard-one .detail-section {
+	height: 4em;
+	background-color: #2F4254;
+}
+
+.dashbord-green .icon-section, .dashbord-green .icon-section i {
+	background-color: #16A085;
+	border-radius: 10px;
+}
+
+.dashbord-green .detail-section {
+	height: 4em;
+	background-color: #149077;
+}
+
+.dashbord-orange .icon-section, .dashbord-orange .icon-section i {
+	background-color: #F39C12;
+	border-radius: 10px;
+}
+
+.dashbord-orange .detail-section {
+	height: 4em;
+	background-color: #DA8C10;
+}
+
+.dashbord-blue .icon-section, .dashbord-blue .icon-section i {
+	background-color: #2980B9;
+	border-radius: 10px;
+}
+
+.dashbord-blue .detail-section {
+	height: 4em;
+	background-color: #2573A6;
+}
+
+.dashbord-red .icon-section, .dashbord-red .icon-section i {
+	background-color: #E74C3C;
+	border-radius: 10px;
+}
+
+.dashbord-red .detail-section {
+	height: 4em;
+	background-color: #CF4436;
+}
+
+.dashbord-skyblue .icon-section, .dashbord-skyblue .icon-section i {
+	background-color: #8E44AD;
+	border-radius: 10px;
+}
+
+.dashbord-skyblue .detail-section {
+	height: 4em;
+	background-color: #803D9B;
+}
+
+.dashbord-light .icon-section, .dashbord-light .icon-section i {
+	background-color: #6CC417;
+	border-radius: 10px;
+}
+
+.dashbord-light .detail-section {
+	height: 4em;
+	background-color: #4CC552;
+}
+
+.dashbord-yellow .icon-section, .dashbord-yellow .icon-section i {
+	background-color: #FDD017;
+	border-radius: 10px;
+}
+
+.dashbord-yellow .detail-section {
+	height: 4em;
+	background-color: #EAC117;
+}
+
+.dashbord-last .icon-section, .dashbord-last .icon-section i {
+	background-color: #C12283;
+	border-radius: 10px;
+}
+
+.dashbord-last .detail-section {
+	height: 4em;
+	background-color: #B3446C;
+}
+.logoutBtn{
+	padding-top: 0px;
+	margin: auto;
+}

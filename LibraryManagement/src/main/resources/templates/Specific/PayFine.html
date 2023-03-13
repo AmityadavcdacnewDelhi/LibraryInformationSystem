@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="gray">
+
+	<!-- JQUERY For Hiding Success Message -->
+	<script type="text/javascript"
+		src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var hideError = function() {
+				$(".alert").hide();
+			};
+			setTimeout(hideError, 5000);
+		});
+	</script>
+
+	<!-- Success Message -->
+	<div th:if="${session.message}"
+		th:classappend="${session.message.type}" class="alert locAlert"
+		id="successMessage" role="alert">
+		<p th:text="${session.message.text}"></p>
+
+		<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+	</div>
+
+	<div class="container-lg cardup">
+
+
+
+		<div class="cardy">
+			<h4>FINE PAYMENT</h4>
+
+			<div>
+				<form th:action=@{/student/payFine} method="post"
+					th:object="${student}">
+					<input name="regNumber" class="ip2" type="number" required min="0"
+						Placeholder="Registration Number"> <input class="ip2"
+						name="finePaid" type="number" required min="0"
+						Placeholder="Fine Amount"> </br>
+					<!--Back and Submit -->
+					<div>
+						<a th:href="@{/app/dashboard}" class="backAddBook noDec"> BACK
+						</a>
+						<button type="submit" class="subButton3 ms-3">PAY</button>
+					</div>
+				</form>
+			</div>
+
+
+
+		</div>
+
+
+	</div>
+
+
+
+</section>
+
+</html>

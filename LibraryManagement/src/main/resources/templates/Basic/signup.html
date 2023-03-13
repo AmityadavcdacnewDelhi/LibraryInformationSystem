@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+     <style>
+  
+       .gradient-custom-3 {
+/* fallback for old browsers */
+
+background: #283779;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+}
+.gradient-custom-4 {
+/* fallback for old browsers */
+background: #84fab0;
+
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+}
+     </style>
+     <script>
+  // Document is ready
+     $(document).ready(function () {
+         // Validate Username
+         $("#usercheck").hide();
+         let usernameError = true;
+         $("#usernames").keyup(function () {
+             validateUsername();
+         });
+         
+         function validateUsername() {
+             let usernameValue = $("#usernames").val();
+             if (usernameValue.length == "") {
+             $("#usercheck").show();
+             usernameError = false;
+             return false;
+             } else if (usernameValue.length < 3 || usernameValue.length > 10) {
+             $("#usercheck").show();
+             $("#usercheck").html("**length of username must be between 3 and 10");
+             usernameError = false;
+             return false;
+             } else {
+             $("#usercheck").hide();
+             }
+         }
+         
+         // Validate Email
+         const email = document.getElementById("email");
+         email.addEventListener("blur", () => {
+             let regex = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+             let s = email.value;
+             if (regex.test(s)) {
+             email.classList.remove("is-invalid");
+             emailError = true;
+             } else {
+             email.classList.add("is-invalid");
+             emailError = false;
+             }
+         });
+         
+         // Validate Password
+         $("#passcheck").hide();
+         let passwordError = true;
+         $("#password").keyup(function () {
+             validatePassword();
+         });
+         function validatePassword() {
+             let passwordValue = $("#password").val();
+             if (passwordValue.length == "") {
+             $("#passcheck").show();
+             passwordError = false;
+             return false;
+             }
+             if (passwordValue.length < 3 || passwordValue.length > 10) {
+             $("#passcheck").show();
+             $("#passcheck").html(
+                 "**length of your password must be between 3 and 10"
+             );
+             $("#passcheck").css("color", "red");
+             passwordError = false;
+             return false;
+             } else {
+             $("#passcheck").hide();
+             }
+         }
+         
+         // Validate Confirm Password
+         $("#conpasscheck").hide();
+         let confirmPasswordError = true;
+         $("#conpassword").keyup(function () {
+             validateConfirmPassword();
+         });
+         function validateConfirmPassword() {
+             let confirmPasswordValue = $("#conpassword").val();
+             let passwordValue = $("#password").val();
+             if (passwordValue != confirmPasswordValue) {
+             $("#conpasscheck").show();
+             $("#conpasscheck").html("**Password didn't Match");
+             $("#conpasscheck").css("color", "red");
+             confirmPasswordError = false;
+             return false;
+             } else {
+             $("#conpasscheck").hide();
+             }
+         }
+         
+         // Submit button
+         $("#submitbtn").click(function () {
+             validateUsername();
+             validatePassword();
+             validateConfirmPassword();
+             validateEmail();
+             if (
+             usernameError == true &&
+             passwordError == true &&
+             confirmPasswordError == true &&
+             emailError == true
+             ) {
+             return true;
+             } else {
+             return false;
+             }
+         });
+         });
+    
+     </script>
+         
+    
+    </head>
+    <body>
+        <section class="vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+            <mark> <h3 class="text-uppercase text-center mb-4">Registration form</h3></mark>
+
+              <form  action="" th:action="@{/app/saveuser}" method="post">
+               <div class="form-group">
+					<label for="user">
+						Username:
+					</label>
+					<input type="text" name="username" placeholder="username" id="usernames" class="form-control">
+					<h5 id="usercheck" style="color: red;">
+						**Username is missing
+					</h5>
+				</div>
+              <div class="form-outline mb-3">
+                  <input name="firstname" required="required" type="text" placeholder="first name" class="form-control form-control-sm" />
+                  <label class="form-label" for="form3Example3cg">first Name</label>
+                </div>
+               <div class="form-outline mb-3">
+                  <input name="middlename" required="required" type="text" placeholder="middle name" class="form-control form-control-sm" />
+                  <label class="form-label" for="form3Example3cg">Middle Name</label>
+                </div>
+                <div class="form-outline mb-3">
+                  <input name="lastname" required="required" type="text" placeholder="last name" class="form-control form-control-sm" />
+                  <label class="form-label" for="form3Example3cg">Last Name</label>
+                </div>
+               
+                <div class="form-outline mb-3">
+                  <input name="address" required="required" type="text" placeholder="address" class="form-control form-control-sm" />
+                  <label class="form-label" for="form3Example3cg">Address</label>
+                </div>
+                <div class="col-md-6 mb-3">
+                
+                 <label class="form-label" for="form3Example3cg">Gender</label>
+                 <select class="select">
+                    <option value="1" disabled >Gender</option>
+                    <option value="2">Male</option>
+                    <option value="3">Female</option>
+                    <option value="4">Other</option>
+                  </select>
+
+                </div>
+              
+               <div class="form-group">
+					<label for="user">
+						Email:
+					</label>
+					<input type="email" name="email" placeholder="email" id="email" required class="form-control">
+					<small id="emailvalid" class="form-text
+				text-muted invalid-feedback">
+						Your email must be a valid email
+					</small>
+				</div>
+
+				<div class="form-group">
+					<label for="password">
+						Password:
+					</label>
+					<input type="password" name="password" id="password" placeholder="password" class="form-control">
+					<h5 id="passcheck" style="color: red;">
+						**Please Fill the password
+					</h5>
+				</div>
+
+				<div class="form-group">
+					<label for="conpassword">
+						Confirm Password:
+					</label>
+					<input type="password" name="confirmpass" id="conpassword" placeholder="confirm Password" class="form-control">
+					<h5 id="conpasscheck" style="color: red;">
+						**Password didn't match
+					</h5>
+				</div>
+
+<div class="container">
+						
+						<button onclick="alert('registration Successful')" type="submit" class="submit">submit</button>
+						
+						<br><br>
+						<a href="login">Login If Already have Signup</a>
+						</div>
+		                <br>
+		                <br>
+		                
+					</form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+          
+    </body>
+</html>

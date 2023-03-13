@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+<a th:href="@{/app/dashboard}" class="subButton2"> Back </a>
+<section class="gray">
+
+	<div class="container-lg">
+
+		<div class="card mt-4">
+			<h6>More than One Students are present with Same Name</h6>
+
+			<th:block th:each="student : ${students}">
+				<div class="stuBox">
+					<a th:href="'/student/SelectStudent/'+ ${student.regNumber}"
+						th:text="${student.regNumber}" class="noDec"></a>
+				</div>
+			</th:block>
+
+
+
+		</div>
+
+
+	</div>
+
+
+
+</section>
+
+</html>

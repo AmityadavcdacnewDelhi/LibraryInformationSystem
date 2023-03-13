@@ -1,0 +1,267 @@
+
+.subButton {
+	border: none;
+	padding: 15px 70px;
+	border-radius: 8px;
+	display: block;
+	background: #ff00ff;
+	color: #fff;
+	font-weight: bold;
+	-webkit-box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
+	-moz-box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
+	box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
+	margin: auto;
+	margin-bottom: 10px;
+	width: 80px;
+}
+
+.subButton1 {
+	border: none;
+	padding: 15px 50px;
+	border-radius: 8px;
+	background: #ff00ff;
+	color: #fff;
+	font-weight: bold;
+	width: auto;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+.subButton2 {
+	border: none;
+	padding: 5px 30px;
+	border-radius: 5px;
+	background: #400040;
+	color: #fff;
+	width: auto;
+	margin-right: 0px;
+	margin-left: 160px;
+}
+
+.subButton3 {
+	border: none;
+	padding: 15px 50px;
+	border-radius: 8px;
+	background: #ff00ff;
+	color: #fff;
+	font-weight: bold;
+	width: auto;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+
+
+.blue {
+	background: #00008B;
+	color: white;
+	text-align: center;
+	margin-top: 10px;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+.purple {
+	background: #800080;
+	color: white;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.studentList .col1 {
+	width: 10%;
+	margin: auto;
+}
+
+.studentList .col2 {
+	width: 40%;
+	margin: auto;
+}
+
+.studentList .col3 {
+	width: 30%;
+	margin: auto;
+	text-align: center;
+}
+
+.filter {
+	text-align: right;
+	margin-top: 15px;
+}
+
+.black {
+	background: black;
+	color: yellow;
+	text-align: center;
+	margin-top: 10px;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+.brown {
+	background: #806517;
+	color: white;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.bookList .col1 {
+	width: 15%;
+	margin: auto;
+}
+
+.bookList .col2 {
+	width: 30%;
+	margin: auto;
+}
+
+.bookList .col3 {
+	width: 25%;
+	margin: auto;
+}
+
+.bookList .col4 {
+	width: 20%;
+	margin: auto;
+	text-align: center;
+}
+
+.filter {
+	text-align: right;
+	margin-top: 15px;
+}
+
+.btn1 {
+	background: #98FF98;
+	border-radius: 10%;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	margin-right: 4px;
+}
+
+.btn2 {
+	background: #FD1C03;
+	border-radius: 10%;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.cola1 {
+	width: 8%;
+	padding-top: 5px;
+}
+
+.cola2 {
+	width: 25%;
+	padding-top: 5px;
+}
+
+.cola3 {
+	width: 20%;
+	padding-top: 5px;
+}
+
+.cola4 {
+	width: 8%;
+	padding-top: 5px;
+}
+
+.cola5 {
+	width: 14%;
+}
+
+.colA {
+	width: 20%;
+	margin-right: 0px;
+}
+
+.rowR {
+	text-align: right;
+}
+
+.filter .butt {
+	background: #52F90C;
+	border-radius: 20%;
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+/* Add Book */
+.addBox {
+	background: linear-gradient(-45deg, #95B9C7, #38ACEC);
+	width: 60%;
+	border-radius: 20px;
+	margin: auto;
+	text-align: center;
+	padding-top: 15px;
+	margin-top: 60px;
+}
+
+.addBoxStu {
+	background: linear-gradient(-45deg, #C58917, #CD853F);
+	width: 60%;
+	border-radius: 20px;
+	margin: auto;
+	text-align: center;
+	padding-top: 15px;
+	margin-top: 30px;
+}
+
+.addBoxRet {
+	background: linear-gradient(-45deg, #C58917, #CD853F);
+	width: 60%;
+	border-radius: 20px;
+	margin: auto;
+	text-align: center;
+	padding-top: 15px;
+	margin-top: 60px;
+}
+
+.addBoxIssue {
+	background: linear-gradient(-45deg, #B5A642, #6A5ACD);
+	width: 60%;
+	border-radius: 20px;
+	margin: auto;
+	text-align: center;
+	padding-top: 15px;
+	margin-top: 70px;
+}
+
+.tryback {
+	background: #191970;
+	padding-top: 30px;
+	min-height: 100vh;
+	padding-bottom: 60px;
+}
+
+.colS {
+	width: 30%;
+}
+
+.colN {
+	width: 50%;
+}
+
+.backAddBook {
+	border: none;
+	
+	padding: 15px 70px;
+	border-radius: 5px;
+	background: #400040;
+	color: #fff;
+	width: auto;
+	margin-right: 0px;
+	margin-left: 50px;
+	font-weight: bold;
+}
+
+.dilKaBut{
+	background: #F70D1A;
+	padding: 10px;
+	border-radius: 10px;
+	font-weight: bold;
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content=
+		"width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="captcha.css">
+	<link rel="stylesheet" href=
+"https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+		integrity=
+"sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+		crossorigin="anonymous">
+	<script src="captcha.js"></script>
+<style>
+
+body {
+  background-image: url('/images/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#image{
+	margin-top: 10px;
+	box-shadow: 5px 5px 5px 5px gray;
+	width: 60px;;
+	padding: 20px;
+	font-weight: 400;
+	padding-bottom: 0px;
+	height: 40px;
+	user-select: none;
+	text-decoration:line-through;
+	font-style: italic;
+	font-size: x-large;
+	border: red 2px solid;
+	margin-left: 10px;
+	
+}
+#user-input{
+	box-shadow: 5px 5px 5px 5px gray;
+	width:auto;
+	margin-right: 10px;
+	padding: 10px;
+	padding-bottom: 0px;
+	height: 40px;
+	border: red 0px solid;
+}
+input{
+	border:1px black solid;
+}
+.inline{
+	display:inline-block;
+}
+#btn{
+	box-shadow: 5px 5px 5px grey;
+	color: aqua;
+	margin: 10px;
+	background-color: brown;
+}
+.login_box{
+   border: 2px solid green;
+   background-color:  rgb(240, 240, 240);
+   width:350px;
+   height:430px;
+}
+
+</style>
+<script>
+var captcha;
+function generate() {
+
+	// Clear old input
+	document.getElementById("submit").value = "";
+
+	// Access the element to store
+	// the generated captcha
+	captcha = document.getElementById("image");
+	var uniquechar = "";
+
+	const randomchar =
+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+	// Generate captcha for length of
+	// 5 with random character
+	for (let i = 1; i < 5; i++) {
+		uniquechar += randomchar.charAt(
+			Math.random() * randomchar.length)
+	}
+
+	// Store generated input
+	captcha.innerHTML = uniquechar;
+}
+
+function printmsg() {
+	const usr_input = document
+		.getElementById("submit").value;
+	
+	// Check whether the input is equal
+	// to generated captcha or not
+	if (usr_input == captcha.innerHTML) {
+		var s = document.getElementById("key")
+			.innerHTML = "Matched";
+		generate();
+	}
+	else {
+		var s = document.getElementById("key")
+			.innerHTML = "not Matched";
+		generate();
+	}
+}
+
+</script>
+</head>
+
+<body>
+<section class="login">
+
+		<!-- JQUERY For Hiding Success Message -->
+		<script type="text/javascript"
+			src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				var hideError = function() {
+					$(".alert").hide();
+				};
+				setTimeout(hideError, 5000);
+			});
+			</script>
+		<!-- Success Message -->
+		<div th:if="${session.message}"
+			th:classappend="${session.message.type}" class="alert locAlert"
+			id="successMessage" role="alert">
+			<p th:text="${session.message.text}"></p>
+
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
+       <center>
+       <br><br><br>
+		<div class="login_box">
+			<div class="left">
+				<div class="top_link">
+					<a th:href="@{/app/home}"><img
+						src="https://drive.google.com/u/0/uc?id=16U__U5dJdaTfNGobB_OpwAJ73vM50rPV&export=download"
+						alt="">Return home</a>
+				</div>
+				<div class="contact">
+
+					<form th:action="@{verify}"  method="post" th:object="${admin}">
+						<h3>SIGN IN</h3>
+                         <div th:if="${param.error}"  class="text-danger"> Invalid Username or Password </div>
+						<!-- User name -->
+						<label>Username</label>
+						<input th:value="${admin.username}" name="username" type="text"
+							placeholder="USERNAME"><br><br>
+							<label>Password</label>
+						<!-- Password -->
+						<input name="password" type="password" placeholder="PASSWORD">
+                    <div onload="generate()">
+	             <div id="user-input" class="inline">
+	              	<input type="text" id="submit"
+	          		placeholder="Captcha code" />
+	           </div>
+
+           	<div class="inline" onclick="generate()">
+          		<i class="fas fa-sync"></i>
+	      </div>
+
+	           <div id="image" class="inline" selectable="False">
+	         </div>
+	         <br>
+	         <input type="submit" id="btn" onclick="printmsg()"/>
+ 	<!-- <button type="submit" class= button >Login</button>  -->
+	<br><br>
+         <a th:href="@{/forget}">forget password</a>
+		               
+	</form>
+
+	<p id="key"></p>
+</div>
+</div>
+</div>
+</center>
+</section>
+</body>
+
+</html>

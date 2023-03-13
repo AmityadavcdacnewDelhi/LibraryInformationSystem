@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="">
+	<!-- JQUERY For Hiding Success Message -->
+	<script type="text/javascript"
+		src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var hideError = function() {
+				$(".alert").hide();
+			};
+			setTimeout(hideError, 5000);
+		});
+	</script>
+
+
+	<div class="tryback">
+
+		<!-- Success Message -->
+		<div th:if="${session.message}"
+			th:classappend="${session.message.type}" class="alert locAlert"
+			id="successMessage" role="alert">
+			<p th:text="${session.message.text}"></p>
+
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
+
+		<div class="addBox">
+			<h3>ADD BOOK</h3>
+
+
+			<div>
+				<form th:action="@{saveBook}" method="post" th:object="${Book}">
+					<!--Title -->
+					<div class="row mb-3 mt-4">
+						<div class="colS">
+							<label class="form-label">Book Title</label>
+						</div>
+						<div class="colN">
+							<input type="text" class="form-control" placeholder="Book Title"
+								name="title" required="required">
+						</div>
+					</div>
+
+					<!--Author -->
+				<!--  	<div class="row mb-3">
+						<div class="colS">
+							<label class="form-label">Author</label>
+						</div>
+						<div class="colN">
+							<input type="text" class="form-control" placeholder="Author"
+								name="author" required="required">
+						</div>
+					</div>-->
+					
+					<!-- Author Salutation -->
+					<div class="row mb-3">
+						<div class="colS">
+							<label class="form-label">Author</label>
+						</div>
+						<div class="colN">
+							<select name="salutation" class="form-control" required="required">
+								<th:bolck th:each="sal : ${salutation}">
+									<option th:text="${sal}"></option>
+								</th:bolck>
+							</select>
+						</div>
+					</div>
+					
+			 
+                 <div class="row mb-3 mt-4">
+						<div class="colS">
+							<label class="form-label">First Name</label>
+						</div>
+						<div class="colN">
+							<input type="text" class="form-control" placeholder="author"
+								name="author" required="required">
+						</div>
+					</div>
+					
+					<div class="row mb-3 mt-4">
+						<div class="colS">
+							<label class="form-label">Middle Name</label>
+						</div>
+						<div class="colN">
+							<input type="text" class="form-control" placeholder="Middle Name"
+								name="middlename" required="required">
+						</div>
+					</div>
+
+					<!--Last Name -->
+					<div class="row mb-3 mt-4">
+						<div class="colS">
+							<label class="form-label">Last Name</label>
+						</div>
+						<div class="colN">
+							<input type="text" class="form-control" placeholder="Last Name"
+								name="lastname" required="required">
+						</div>
+					</div>
+					<!--Copies -->
+					<div class="row mb-3">
+						<div class="colS">
+							<label class="form-label">Copies</label>
+						</div>
+						<div class="colN">
+							<input type="number" class="form-control" placeholder="Copies"
+								name="copies" required="required">
+						</div>
+					</div>
+                  
+					<!--Category -->
+					<div class="row mb-3">
+						<div class="colS">
+							<label class="form-label">Category</label>
+						</div>
+						<div class="colN">
+							<select name="category" class="form-control" required="required">
+								<th:bolck th:each="cat : ${categories}">
+									<option th:text="${cat}"></option>
+								</th:bolck>
+							</select>
+						</div>
+					</div>
+					
+					<!-- Bound type -->
+					<div class="row mb-3">
+						<div class="colS">
+							<label class="form-label">Bound-Type</label>
+						</div>
+						<div class="colN">
+							<select name="Bound" class="form-control" required="required">
+								<th:bolck th:each="bat : ${Bound}">
+									<option th:text="${bat}"></option>
+								</th:bolck>
+							</select>
+						</div>
+					</div>
+                    <!-- Year -->
+                    <div class="row mb-3">
+						<div class="colS">
+							<label class="form-label">Year of Publication</label>
+						</div>
+						<div class="colN">
+							<input type="number" class="form-control" min="0"
+								placeholder="Year" name="price" required="required">
+						</div>
+					</div>
+					<!--Price -->
+					<div class="row mb-3">
+						<div class="colS">
+							<label class="form-label">Book Price</label>
+						</div>
+						<div class="colN">
+							<input type="number" class="form-control" min="0"
+								placeholder="Price" name="price" required="required">
+						</div>
+					</div>
+					 <div class="row mb-3">
+						<div class="colS">
+							<label class="form-label">Book Cover Photo</label>
+						</div>
+						<div class="colN">
+							 <input type="file"  name="coverphoto"
+								placeholder="CoverPhoto"  required="required">
+						</div>
+					 
+                      
+                      </div>
+					<!--Back and Submit -->
+					<div>
+						<a th:href="@{/app/dashboard}" class="backAddBook noDec"> BACK
+						</a>
+						<button type="submit" class="subButton3 ms-3">ADD BOOK</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+</html>

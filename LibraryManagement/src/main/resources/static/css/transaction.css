@@ -1,0 +1,143 @@
+/* Student Transaction */
+.Strans{
+	background: #e2e2e2;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	min-height: 100vh;
+}
+.line{
+	height: 3px;
+	background: #e2e2e2;
+}
+
+.Strans .rowH{
+	
+	color: white;
+	text-align: center;
+	font-size: medium;
+	margin: auto;
+	text-align:center;
+	background: #0C6D21;
+}
+
+.Strans .rowD{
+	color: white;
+	text-align: center;
+	font-size: medium;
+	margin-top:5px;
+	margin: auto;
+	text-align:center;
+}
+
+.Strans .col6{
+	width:6%;
+	background: #0C6D21;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+.Strans .col10{
+	width:10%;
+	background: #0C6D21;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+.Strans .col20{
+	width:26%;
+	background: #0C6D21;
+	margin-left: 1px;
+	margin-right: 1px;
+	
+}
+.Strans .col15{
+	width:15%;
+	background: #0C6D21;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+
+/* Student Transaction */
+.Btrans{
+	background: #e2e2e2;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	min-height: 100vh;
+}
+
+.Btrans .rowH{
+	
+	color: white;
+	text-align: center;
+	font-size: medium;
+	margin: auto;
+	text-align:center;
+	background: #802A08;
+}
+
+.Btrans .rowD{
+	color: white;
+	text-align: center;
+	font-size: medium;
+	margin-top:5px;
+	margin: auto;
+	text-align:center;
+}
+
+.Btrans .col6{
+	width:6%;
+	background: #802A08;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+.Btrans .col10{
+	width:10%;
+	background: #802A08;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+.Btrans .col20{
+	width:26%;
+	background: #802A08;
+	margin-left: 1px;
+	margin-right: 1px;
+	
+}
+.Btrans .col15{
+	width:15%;
+	background: #802A08;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+.dark{
+	background: #000000;
+	padding: 6px;
+}
+.rect1{
+	background: #3A3B3C;
+	width:20%;
+	margin: auto;
+	border: 3px;
+	border-color: yellow;
+	text-align: centre;
+}
+
+.rect2{
+	background: #3A3B3C;
+	width:26%;
+	margin: auto;
+	border: 3px;
+	border-color: yellow;
+	text-align: centre;
+}
+
+.rowA{
+	margin-top:4px;
+	margin-bottom: 4px;
+	color: yellow;
+	text-align: center;
+}
+.kesari{
+	background: #FF5F1F;
+	padding: 6px;
+}

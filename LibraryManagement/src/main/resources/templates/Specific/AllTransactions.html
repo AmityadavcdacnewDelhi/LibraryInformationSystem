@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="Btrans">
+	<div class="container-lg">
+		<div class="mt-3 ">
+			<a th:href="@{/app/dashboard}" class="BigB noDec"> Back </a>
+		</div>
+		<div class="black">All Transaction</div>
+
+		<!-- Line -->
+		<div class="line"></div>
+
+		<div class="kesari">
+			<div class="row rowA">
+				<div class="rect1">BOOK ID</div>
+				<div class="rect2">TITLE</div>
+				<div class="rect1">REG NUMBER</div>
+				<div class="rect2">STUDENT NAME</div>
+			</div>
+			<div class="row rowA">
+				<div class="rect1">ISSUE DATE</div>
+				<div class="rect2">EXPECTED RETURN</div>
+				<div class="rect1">ACTUAL RETURN</div>
+				<div class="rect2">FINE</div>
+			</div>
+		</div>
+
+		<th:block th:each="trans : ${transac}">
+			<!-- Line -->
+			<div class="line"></div>
+
+			<div class="dark">
+				<div class="row rowA">
+					<div th:text="${trans.bookId}" class="rect1"></div>
+					<div th:text="${trans.bookName}" class="rect2"></div>
+					<div th:text="${trans.regNumber}" class="rect1"></div>
+					<div th:text="${trans.studentFullName}" class="rect2"></div>
+				</div>
+				<div class="row rowA">
+					<div th:text="${trans.issueDate}" class="rect1"></div>
+					<div th:text="${trans.expectedReturnDate}" class="rect2"></div>
+					<div th:text="${trans.actualReturnDate}" class="rect1"></div>
+					<div th:text="'Rs. '+${trans.fine}" class="rect2"></div>
+				</div>
+			</div>
+		</th:block>
+
+	</div>
+
+
+</section>
+
+</html>

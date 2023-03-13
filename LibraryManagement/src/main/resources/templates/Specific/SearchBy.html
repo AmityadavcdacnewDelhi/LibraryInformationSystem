@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="Search">
+
+	<!-- JQUERY For Hiding Success Message -->
+	<script type="text/javascript"
+		src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var hideError = function() {
+				$(".alert").hide();
+			};
+			setTimeout(hideError, 5000);
+		});
+	</script>
+
+	<!-- Success Message -->
+	<div th:if="${session.message}"
+		th:classappend="${session.message.type}" class="alert locAlert"
+		id="successMessage" role="alert">
+		<p th:text="${session.message.text}"></p>
+
+		<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+	</div>
+
+	<div class="container-lg">
+		<div class="mt-3 ">
+			<a th:href="@{/app/dashboard}" class="BigB noDec"> Back </a>
+		</div>
+		<div class="row mt-3">
+
+			<!-- Search By Book Id -->
+			<div class="upleft">
+
+				<div class="text-center">
+					<h4>BOOK ID</h4>
+					<form th:action="@{/book/searchByBookId}" method="post">
+						<input name="bookId" min="1" class="inp mt-3" type="number"
+							placeholder="Book ID" required></br>
+						<button class="mt-2 butS" type="submit">Search</button>
+					</form>
+				</div>
+
+			</div>
+			<!-- Search By Book Title -->
+			<div class="upright">
+
+				<div class="text-center">
+					<h4>BOOK TITLE</h4>
+					<form th:action="@{/book/searchByBookTitle}" method="post">
+						<input name="bookTitle" list="datalistOptions" class="inp mt-3"
+							type="text" placeholder="Book Title" required></br>
+						<button class="mt-2 butS" type="submit">Search</button>
+
+						<datalist id="datalistOptions">
+							<th:block th:each="book : ${bookTitle}">
+
+								<option th:value="${book}">
+							</th:block>
+						</datalist>
+
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row mt-2">
+			<!-- Search By Registration Number -->
+			<div class="downleft">
+				<div class="text-center">
+					<h4>REG NUMBER</h4>
+					<form th:action="@{/student/searchByStudentRegN}" method="post">
+						<input name="regNr" min="1" class="inp mt-3" type="number"
+							placeholder="Regisration Number" required></br>
+						<button class="mt-2 butS" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+
+			<!-- Search By Student Name -->
+			<div class="downright">
+				<div class="text-center">
+					<h4>STUDENT NAME</h4>
+					<form th:action="@{/student/searchByStudentName}" method="post">
+						<input name="studentName" list="datalistOptions2" class="inp mt-3"
+							type="text" placeholder="Student Name" required></br>
+						<button class="mt-2 butS" type="submit">Search</button>
+
+						<datalist id="datalistOptions2">
+							<th:block th:each="student : ${students}">
+
+								<option th:value="${student}">
+							</th:block>
+						</datalist>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+
+</section>
+
+</html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="gray">
+	<div class="container-lg">
+		<a th:href="@{/book/searchPage}" class="subButton2 noDec"> Back </a> <br />
+		<th:block th:each="book : ${books}">
+			<div class="smallBox"
+				th:classappend="${book.isIssued ? 'smallBoxRed' : 'smallBoxGreen'}">
+
+				<a th:href="'/book/OneBook/'+${book.bookId}"
+					th:text="${book.bookId}" class="noDec"></a>
+			</div>
+		</th:block>
+	</div>
+</section>
+
+</html>

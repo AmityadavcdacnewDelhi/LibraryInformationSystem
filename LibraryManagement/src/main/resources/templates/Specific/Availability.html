@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="gray2">
+
+	<!-- JQUERY For Hiding Success Message -->
+	<script type="text/javascript"
+		src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var hideError = function() {
+				$(".alert").hide();
+			};
+			setTimeout(hideError, 5000);
+		});
+	</script>
+
+
+
+	<!-- Success Message -->
+	<div th:if="${session.message}"
+		th:classappend="${session.message.type}" class="alert locAlert"
+		id="successMessage" role="alert">
+		<p th:text="${session.message.text}"></p>
+
+		<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+	</div>
+
+	<div class="container-lg">
+
+		<div class="black">Book Information</div>
+
+		<div class="row">
+			<div class="coll left1">Title</div>
+			<div th:text="${OneBook.title}" class="colr right1"></div>
+		</div>
+
+		<div class="row">
+			<div class="coll left1">Author</div>
+			<div th:text="${OneBook.author}" class="colr right1"></div>
+		</div>
+
+		<div class="row">
+			<div class="coll left1">Category</div>
+			<div th:text="${OneBook.category}" class="colr right1"></div>
+		</div>
+
+		<div class="row">
+			<div class="coll left1">Price</div>
+			<div th:text="${OneBook.price}" class="colr right1"></div>
+		</div>
+
+		<div class="row">
+			<div class="coll left1">Total</div>
+			<div th:text="${total}" class="colr right1"></div>
+		</div>
+		<div class="row">
+			<div class="coll left1">Issued</div>
+			<div th:text="${issued}" class="colr right1"></div>
+		</div>
+		<div class="row">
+			<div class="coll left1">Available</div>
+			<div th:text="${available}" class="colr right1"></div>
+		</div>
+
+
+		<div class="mt-4">
+			<a th:href="@{/book/bookInfoUnique}" class="backB"> BACK </a> <a
+				th:href="@{'/book/updateBook/'+${OneBook.title}+'/'+${OneBook.author}}"
+				class="okB"> UPDATE </a>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+</section>
+
+</html>

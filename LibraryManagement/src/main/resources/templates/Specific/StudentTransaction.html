@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="Strans">
+	<div class="container-lg">
+		<a th:href="@{'/student/OneStudent/'+${stuRegNr}}"
+			class="subButton2 noDec"> Back </a>
+
+		<div class="black">Student Transaction</div>
+		<!-- Row HEAD -->
+		<div class="row rowH">
+
+			<div class="col6">Sr No</div>
+
+			<div class="col10">Book ID</div>
+
+			<div class="col20">Title</div>
+
+			<div class="col15">Issue Date</div>
+
+			<div class="col15">Expected Return Date</div>
+
+			<div class="col15">Actual Return Date</div>
+
+			<div class="col10">Fine</div>
+
+		</div>
+
+		<th:block th:each="transaction,iterator : ${transactions}">
+			<!-- Line -->
+			<div class="line"></div>
+
+			<!-- Row DATA -->
+			<div class="row rowD">
+
+				<div th:text="${iterator.index + 1}" class="col6"></div>
+
+				<div th:text="${transaction.bookId}" class="col10"></div>
+
+				<div th:text="${transaction.bookName}" class="col20"></div>
+
+				<div th:text="${transaction.issueDate}" class="col15"></div>
+
+				<div th:text="${transaction.expectedReturnDate}" class="col15"></div>
+
+				<div th:text="${transaction.actualReturnDate}" class="col15"></div>
+
+				<div th:text="${transaction.fine}" class="col10"></div>
+
+			</div>
+
+		</th:block>
+
+	</div>
+
+</section>
+
+</html>

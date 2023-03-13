@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="gray2">
+
+
+	<div class="container-lg">
+		<a th:href="@{/book/searchPage}" class="subButton2 noDec"> Back </a>
+		<div class="black">Book Information</div>
+
+        <div class="row">
+			<div class="coll left1">Cover Photo</div>
+			<img src="${OneBook.coverphoto}" width=100px height=100px class="colr right1"></div>
+		</div>
+		<div class="row">
+			<div class="coll left1">Book ID</div>
+			<div th:text="${OneBook.bookId}" class="colr right1"></div>
+		</div>
+
+
+		<div class="row">
+			<div class="coll left1">Title</div>
+			<div th:text="${OneBook.title}" class="colr right1"></div>
+		</div>
+
+		<div class="row">
+			<div class="coll left1">Author</div>
+			<div th:text="${OneBook.author}" class="colr right1"></div>
+		</div>
+
+		<div class="row">
+			<div class="coll left1">Price</div>
+			<div th:text="${OneBook.price}" class="colr right1"></div>
+		</div>
+
+		<div class="row">
+			<div class="coll left1">Is Issued</div>
+			<div th:text="${OneBook.isIssued} ? 'Yes' : 'No' "
+				class="colr right1"></div>
+		</div>
+
+
+
+
+		<div class="row">
+			<div class="coll left1">Transactions</div>
+			<div class="colr right1">
+				<a th:href="@{'/book/transaction/' + ${OneBook.bookId}}"
+					class="noDec"> <svg xmlns="http://www.w3.org/2000/svg"
+						width="24" height="24" fill="currentColor" class="bi bi-journals"
+						viewBox="0 0 16 16">
+  <path
+							d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z" />
+  <path
+							d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z" />
+</svg>
+				</a>
+			</div>
+		</div>
+
+
+
+
+	</div>
+
+
+
+</section>
+
+</html>

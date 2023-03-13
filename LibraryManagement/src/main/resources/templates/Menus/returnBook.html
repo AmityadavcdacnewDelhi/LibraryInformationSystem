@@ -1,0 +1,83 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="">
+	<!-- JQUERY For Hiding Success Message -->
+	<script type="text/javascript"
+		src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var hideError = function() {
+				$(".alert").hide();
+			};
+			setTimeout(hideError, 5000);
+		});
+	</script>
+	<div class="tryback">
+
+		<!-- Success Message -->
+		<div th:if="${session.message}"
+			th:classappend="${session.message.type}" class="alert locAlert"
+			id="successMessage" role="alert">
+			<p th:text="${session.message.text}"></p>
+
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
+
+		<div class="addBoxRet">
+			<h3>RETURN BOOK</h3>
+			<div>
+				<form th:action="@{/transaction/returnValues}" method="post"
+					th:object="${transaction}">
+					<!--BOOK ID -->
+					<div class="row mb-3 mt-4">
+						<div class="colS">
+							<label class="form-label">BOOK ID</label>
+						</div>
+						<div class="colN">
+							<input type="number" class="form-control" placeholder="Book ID"
+								name="bookId" required="required">
+						</div>
+					</div>
+
+
+					<!--Back and Submit -->
+					<div>
+						<a th:href="@{/app/dashboard}" class="backAddBook noDec"> BACK
+						</a>
+						<button type="submit" class="subButton3 ms-3">OK</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="">
+	<!-- JQUERY For Hiding Success Message -->
+	<script type="text/javascript"
+		src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var hideError = function() {
+				$(".alert").hide();
+			};
+			setTimeout(hideError, 5000);
+		});
+	</script>
+	<div class="tryback">
+
+		<!-- Success Message -->
+		<div th:if="${session.message}"
+			th:classappend="${session.message.type}" class="alert locAlert"
+			id="successMessage" role="alert">
+			<p th:text="${session.message.text}"></p>
+
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
+
+		<div class="addBoxStu">
+			<h3>RETURN BOOK</h3>
+			<div>
+				<form th:action="@{/transaction/returnBook}" method="post"
+					th:object="${transaction}">
+					<!--BOOK ID -->
+					<div class="row mb-3 mt-4">
+						<div class="colS">
+							<label class="form-label">BOOK ID</label>
+						</div>
+						<div class="colN">
+							<input th:value="${transaction.bookId}" name="bookId"
+								type="number" class="form-control" disabled>
+
+						</div>
+					</div>
+
+					<!--BOOK NAME -->
+					<div class="row mb-3 mt-4">
+						<div class="colS">
+							<label class="form-label">Book Name</label>
+						</div>
+						<div class="colN">
+							<input th:value="${transaction.bookName}" name="bookName"
+								type="text" class="form-control" disabled>
+
+						</div>
+					</div>
+
+					<!--Registration ID -->
+					<div class="row mb-3 mt-4">
+						<div class="colS">
+							<label class="form-label">Registration ID</label>
+						</div>
+						<div class="colN">
+							<input th:value="${transaction.regNumber}" name="regNumber"
+								type="number" class="form-control" disabled>
+						</div>
+					</div>
+
+					<!--STUDENT NAME -->
+					<div class="row mb-3 mt-4">
+						<div class="colS">
+							<label class="form-label">Student Name</label>
+						</div>
+						<div class="colN">
+							<input th:value="${transaction.studentFullName}"
+								name="studentFullName" type="text" class="form-control" disabled>
+
+						</div>
+					</div>
+
+
+					<!--Back and Submit -->
+					<div>
+						<a th:href="@{/book/returnBook}" class="backAddBook noDec">
+							BACK </a>
+						<button type="submit" class="subButton3 ms-3">RETURN BOOK</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
+

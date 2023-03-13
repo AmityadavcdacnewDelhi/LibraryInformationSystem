@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section class="gray">
+
+	<div class="container-lg">
+
+		<div class="square">
+
+			<h3 class="heading mt-2">Update Student Details</h3>
+
+			<div class="smSquare">
+
+				<form th:action="@{'/student/saveUpdate/'+${Student.regNumber}}"
+					method="post" th:object="${Student}">
+					<table>
+						<!-- First Name -->
+						<tr>
+							<td class="leftcol">First Name</td>
+							<td><input type="text" placeholder="First Name"
+								class="form-control" th:value="${Student.name}" name="name"
+								required="required"></td>
+						</tr>
+
+						<!-- Last Name -->
+						<tr>
+							<td class="leftcol">Last Name</td>
+							<td><input type="text" placeholder="Last Name"
+								class="form-control" th:value="${Student.surname}"
+								name="surname" required="required"></td>
+
+						</tr>
+						<!-- Branch-->
+						<tr>
+							<td class="leftcol">Branch</td>
+							<td><select th:value="${Student.branch}" name="branch"
+								class="form-control" required="required">
+									<th:bolck th:each="branch : ${branches}">
+										<option th:text="${branch}"
+											th:selected="${branch} == ${Student.branch}"></option>
+									</th:bolck>
+							</select></td>
+
+						</tr>
+
+						<!-- Year -->
+						<tr>
+							<td class="leftcol">Year</td>
+							<td><select th:value="${Student.year}" name="year"
+								class="form-control" required="required">
+									<th:bolck th:each="year : ${years}">
+										<option th:text="${year}"
+											th:selected="${year} == ${Student.year}"></option>
+									</th:bolck>
+							</select></td>
+
+						</tr>
+
+						<!-- Division -->
+						<tr>
+							<td class="leftcol">Division</td>
+							<td><select th:value="${Student.division}" name="division"
+								class="form-control" required="required">
+									<th:bolck th:each="divi : ${divisions}">
+										<option th:text="${divi}"
+											th:selected="${divi} == ${Student.division}"></option>
+									</th:bolck>
+							</select></td>
+
+						</tr>
+
+						<!-- Roll Number -->
+						<tr>
+							<td class="leftcol">Roll Number</td>
+							<td><input type="number" placeholder="Roll Number"
+								name="rollNumber" th:value="${Student.rollNumber}"
+								class="form-control" required="required"></td>
+
+						</tr>
+					</table>
+
+					<!--  Submit -->
+					<button type="submit" class="upBut upButh mt-2">UPDATE</button>
+
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+
+</section>
+
+
+</html>

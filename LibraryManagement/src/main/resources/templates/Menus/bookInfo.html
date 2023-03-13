@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Basic/base::layout(~{::section})">
+
+
+<section>
+
+
+
+	<div class="container-lg bookList">
+
+		<a th:href="@{/app/dashboard}" class="subButton2"> Back </a>
+
+
+		<div class="row black">
+			<div class="col1">ID</div>
+			<div class="col2">Title</div>
+			<div class="col3">Author</div>
+			<div class="col4">Action</div>
+		</div>
+
+
+		<div class="row brown">
+			<div class="col1">RN</div>
+			<div class="col2">Name</div>
+			<div class="col3">Author</div>
+			<div class="col4">
+				<a th:href="@{/book/OneBook}">
+					<button type="button" class="btn1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+							fill="currentColor" class="bi bi-info-square-fill"
+							viewBox="0 0 16 16">
+  <path
+								d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.93 4.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+</svg>
+					</button>
+				</a>
+
+
+				<button type="button" class="btn2">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+						fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+  <path
+							d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+</svg>
+				</button>
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+</section>
+</body>
+</html>
